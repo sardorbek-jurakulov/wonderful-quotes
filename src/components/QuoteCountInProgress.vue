@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="progress-wrapper">
-    <div class="progress" :style="[{'width': (quotesCount*10)+'%'}]">
+      <div class="progress" :style="[{'width': (quotesCount*10)+'%'}]">
+        {{ quotesCount }} / 10
       </div>
     </div>
   </div>
@@ -37,9 +38,14 @@ export default {
 }
 
 .progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #2c2;
   margin: 0px;
+  color: #fff;
+  transition: width ease 0.5s;
 }
 </style>
