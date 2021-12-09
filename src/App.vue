@@ -1,8 +1,14 @@
 <template>
     <div class="container">
       <app-quote-count-in-progress :quotesCount="quotesCount"></app-quote-count-in-progress>
-      <app-new-quote @createdNewQuote="hasBeenAddedQuote = $event"></app-new-quote>
-      <app-quotes :hasBeenAddedQuote="hasBeenAddedQuote" @quotesCountWasChanged="quotesCount = $event"></app-quotes>
+      <app-new-quote 
+        :isQuotesCountOwerflow="isQuotesCountOwerflow"
+        @createdNewQuote="hasBeenAddedQuote = $event"></app-new-quote>
+      <app-quotes 
+        :hasBeenAddedQuote="hasBeenAddedQuote" 
+        @quotesCountWasChanged="quotesCount = $event"
+        @isQuotesCountOwerflow="isQuotesCountOwerflow = $event"
+      ></app-quotes>
     </div>
 </template>
 
@@ -15,6 +21,7 @@ import QuoteCountInProgress from './components/QuoteCountInProgress.vue';
       return {
         hasBeenAddedQuote: '',
         quotesCount: 0,
+        isQuotesCountOwerflow: false,
       }
     },
     components: {
