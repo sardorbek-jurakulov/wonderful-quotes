@@ -9,12 +9,9 @@
 import NewQuote from './components/NewQuote.vue';
 import Quotes from './components/Quotes.vue';
   export default {
-    data: {
-      hasBeenAddedQuote: '',
-    },
-    watch: {
-      hasBeenAddedQuote() {
-        console.log(this.hasBeenAddedQuote);
+    data() {
+      return {
+        hasBeenAddedQuote: '',
       }
     },
     components: {

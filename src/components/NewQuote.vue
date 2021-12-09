@@ -11,9 +11,8 @@ export default {
   methods: {
     newQuoteRegistrator(evt) {
       evt.preventDefault();
-      let quoteCreatorField = document.querySelector('#quoteCreatorField').value;
-      //console.log(quoteCreatorField);
-      this.$emit("createdNewQuote", quoteCreatorField);
+      this.$emit("createdNewQuote", document.querySelector('#quoteCreatorField').value);
+      document.querySelector('#quoteCreatorField').value = null;
     }
   }
 }

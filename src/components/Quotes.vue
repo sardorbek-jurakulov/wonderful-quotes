@@ -2,7 +2,7 @@
   <div>
     <div v-for="(quote, index) in quotesList" :key="index">
       <p>
-        <i>quote</i>
+        <i>{{ quote }}</i>
       </p>
     </div>
   </div>
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      quotesList: []
+      quotesList: [],
     }
   },
   watch: {
