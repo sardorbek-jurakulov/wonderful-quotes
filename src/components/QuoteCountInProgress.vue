@@ -14,6 +14,14 @@ export default {
       type: Number,
       required: true,
     }
+  },watch: {
+    quotesCount() {
+      if(this.quotesCount < 0) {
+        this.quotesCount = 0;
+      } else if(this.quotesCount > 10) {
+        this.quotesCount = 10;
+      }
+    }
   }
 }
 </script>
