@@ -1,9 +1,7 @@
 <template>
   <div>
-    <div v-for="(quote, index) in quotesList" :key="index">
-      <p>
-        <i>{{ quote }}</i>
-      </p>
+    <div @click="removeQuote" style="cursor:pointer;" v-for="(quote, index) in quotesList" :key="index">
+        {{ quote }}
     </div>
   </div>
 </template>
@@ -29,6 +27,14 @@ export default {
   methods: {
     pushNewQuoteToQuotesList(newQuote) {
       this.quotesList.push(newQuote);
+    },
+    removeQuote(evt) {
+      let isBeingDelatedQuote = evt.target.innerHTML.trim();
+      this.quotesList.map((item, index) => {
+        if(item == isBeingDelatedQuote) {
+          this.quotesList.splice(index, 1);
+        }
+      })
     }
   }
 }
