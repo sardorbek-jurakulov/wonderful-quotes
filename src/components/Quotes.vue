@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="quotes-container">
     <div @click="removeQuote" style="cursor:pointer;" v-for="(quote, index) in quotesList" :key="index">
         {{ quote }}
     </div>
@@ -17,16 +17,18 @@ export default {
   data() {
     return {
       quotesList: [],
+      quotesCount: 0,
     }
   },
   watch: {
     hasBeenAddedQuote() {
-      this.pushNewQuoteToQuotesList(this.hasBeenAddedQuote);
+      this.quotesCount = this.pushNewQuoteToQuotesList(this.hasBeenAddedQuote);
+      this.$emit('quotesCountWasChanged', this.quotesCount);
     }
   },
   methods: {
     pushNewQuoteToQuotesList(newQuote) {
-      this.quotesList.push(newQuote);
+      return this.quotesList.push(newQuote);
     },
     removeQuote(evt) {
       let isBeingDelatedQuote = evt.target.innerHTML.trim();
@@ -41,5 +43,7 @@ export default {
 </script>
 
 <style>
-
+.quotes-container {
+  margin-top: 20px;
+}
 </style>
